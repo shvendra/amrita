@@ -11,6 +11,7 @@ const orderRoutes = require("../routes/orderRoutes");
 const customerOrderRoutes = require("../routes/customerOrderRoutes");
 const categoryRoutes = require("../routes/categoryRoutes");
 const couponRoutes = require("../routes/couponRoutes");
+const notificationRoutes = require("../routes/notificationRoutes");
 const attributeRoutes = require("../routes/attributeRoutes");
 const settingRoutes = require("../routes/settingRoutes");
 const currencyRoutes = require("../routes/currencyRoutes");
@@ -40,6 +41,8 @@ app.get("/", (req, res) => {
 app.use("/api/products/", productRoutes);
 app.use("/api/category/", categoryRoutes);
 app.use("/api/coupon/", couponRoutes);
+app.use("/api/notification/", notificationRoutes);
+
 app.use("/api/customer/", customerRoutes);
 app.use("/api/order/", isAuth, customerOrderRoutes);
 app.use("/api/attributes/", attributeRoutes);

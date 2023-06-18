@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const { signInToken, tokenForVerify } = require("../config/auth");
 const { getEmailOtp, getSmsOtp } = require("../config/getOtp");
 
-const {  sendEmail } = require("../../dashtar-backend/lib/email-sender/sender");
+const {  sendEmail } = require("../../18sports-ecommerce-backend/lib/email-sender/sender");
 
 const Admin = require("../models/Admin");
 
@@ -171,7 +171,7 @@ const verifyOtp = async (req, res) => {
           staff.veryfied = 'Veryfied';
         staff.save();
         return res.status(200).send({
-          message: "OTP Veryfied Successfully!",
+          message: "OTP verified Successfully!",
         });
         }
 };
