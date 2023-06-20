@@ -108,7 +108,7 @@ const forgetPassword = async (req, res) => {
       from: process.env.EMAIL_USER,
       to: `${req.body.verifyEmail}`,
       subject: "Password Reset",
-      html: `<h2>Hello ${isAdded.name.en}</h2>
+      html: `<h2>Hello ${req.body.verifyEmail}</h2>
       <p>A request has been received to change the password for your <strong>18 Sports Ventures</strong> account </p>
 
         <p>This link will expire in <strong> 15 minute</strong>.</p>
