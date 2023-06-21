@@ -78,15 +78,16 @@ const updateCoupon = async (req, res) => {
 
     if (coupon) {
       coupon.title = { ...coupon.title, ...req.body.title };
-      // coupon.title[req.body.lang] = req.body.title;
-      // coupon.title = req.body.title;
+       coupon.title[req.body.lang] = req.body.title;
+       coupon.title = req.body.title;
       coupon.couponCode = req.body.couponCode;
       coupon.endTime = dayjs().utc().format(req.body.endTime);
-      // coupon.discountPercentage = req.body.discountPercentage;
+       coupon.discountPercentage = req.body.discountPercentage;
       coupon.minimumAmount = req.body.minimumAmount;
       coupon.productType = req.body.productType;
       coupon.discountType = req.body.discountType;
       coupon.logo = req.body.logo;
+      coupon.status = req.body.status;
 
       await coupon.save();
       res.send({ message: "Coupon Updated Successfully!" });

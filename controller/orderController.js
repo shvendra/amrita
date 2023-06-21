@@ -10,14 +10,13 @@ const getAllOrders = async (req, res) => {
   date.setDate(date.getDate() - Number(day));
   const dateTime = date.toString();
 
-  const beforeToday = new Date();
-  beforeToday.setDate(beforeToday.getDate() - 1);
+  const beforeToday = new Date(endDate);
+  beforeToday.setDate(beforeToday.getDate() +1);
   const before_today = beforeToday.toString();
 
   const startDateData = new Date(startDate);
   startDateData.setDate(startDateData.getDate());
   const start_date = startDateData.toString();
-
   const queryObject = {};
 
   if (!status) {
@@ -28,11 +27,11 @@ const getAllOrders = async (req, res) => {
       { status: { $regex: `Cancel`, $options: "i" } },
     ];
   }
-
+console.log(customerName);
   if (customerName) {
     queryObject.$or = [
       { "user_info.name": { $regex: `${customerName}`, $options: "i" } },
-      { invoice: { $regex: `${customerName}`, $options: "i" } },
+      // { invoice: { $regex: `${customerName}`, $options: "i" } },
     ];
   }
 
@@ -44,7 +43,7 @@ const getAllOrders = async (req, res) => {
     queryObject.status = { $regex: `${status}`, $options: "i" };
   }
 
-  if (startDate && endDate) {
+  if (startDate && before_today) {
     queryObject.updatedAt = {
       $gt: start_date,
       $lt: before_today,
