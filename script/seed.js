@@ -64,7 +64,7 @@ const importData = async () => {
     // await Setting.deleteMany();
     // await Setting.insertMany(settingData);
 
-    console.log("data inserted successfully!");
+    // console.log("data inserted successfully!");
     process.exit();
   } catch (error) {
     console.log("error", error);

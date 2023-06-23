@@ -27,7 +27,7 @@ const getAllOrders = async (req, res) => {
       { status: { $regex: `Cancel`, $options: "i" } },
     ];
   }
-console.log(customerName);
+// console.log(customerName);
   if (customerName) {
     queryObject.$or = [
       { "user_info.name": { $regex: `${customerName}`, $options: "i" } },

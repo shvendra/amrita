@@ -25,7 +25,7 @@ const getEmailOtp = (user) => {
 }
 const getSmsOtp = (user) => {
     try {
-      console.log(user);
+      // console.log(user);
     var unirest = require("unirest");
     var phone = user.phone;
     const rand = Math.floor(1000 + Math.random() * 9000);

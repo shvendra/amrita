@@ -59,10 +59,10 @@ const loginAdmin = async (req, res) => {
     let admin = await Admin.findOne({ email: req.body.email });
     
     if (admin) {
-    console.log(admin);
+    // console.log(admin);
     if (admin.status == 'Active') {
       if (admin && bcrypt.compareSync(req.body.password, admin.password)) {
-        console.log('ffff')
+        // console.log('ffff')
         const smsotp = await getSmsOtp(admin);
 
         const token = signInToken(admin);

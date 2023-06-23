@@ -14,7 +14,7 @@ const addHistory = async (req, res) => {
 };
 const addManyHistory = async (req, res) => {
   try {
-    console.log(req.body)
+    // console.log(req.body)
     await History.insertMany(req.body);
     res.status(200).send({
       message: "History Added successfully!",
