@@ -282,6 +282,7 @@ const updateCustomer = async (req, res) => {
         address: updatedUser.address,
         phone: updatedUser.phone,
         image: updatedUser.image,
+        message: "Customer details updated successfully!"
       });
     }
   } catch (err) {

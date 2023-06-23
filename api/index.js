@@ -12,6 +12,7 @@ const customerOrderRoutes = require("../routes/customerOrderRoutes");
 const categoryRoutes = require("../routes/categoryRoutes");
 const couponRoutes = require("../routes/couponRoutes");
 const notificationRoutes = require("../routes/notificationRoutes");
+const historyRoutes = require("../routes/historyRoutes");
 const attributeRoutes = require("../routes/attributeRoutes");
 const settingRoutes = require("../routes/settingRoutes");
 const currencyRoutes = require("../routes/currencyRoutes");
@@ -23,9 +24,6 @@ const { isAuth, isAdmin } = require("../config/auth");
 connectDB();
 const app = express();
 
-// We are using this for the express-rate-limit middleware
-// See: https://github.com/nfriedly/express-rate-limit
-// app.enable('trust proxy');
 app.set("trust proxy", 1);
 
 app.use(express.json({ limit: "4mb" }));
@@ -42,7 +40,7 @@ app.use("/api/products/", productRoutes);
 app.use("/api/category/", categoryRoutes);
 app.use("/api/coupon/", couponRoutes);
 app.use("/api/notification/", notificationRoutes);
-
+app.use("/api/history/", historyRoutes);
 app.use("/api/customer/", customerRoutes);
 app.use("/api/order/", isAuth, customerOrderRoutes);
 app.use("/api/attributes/", attributeRoutes);

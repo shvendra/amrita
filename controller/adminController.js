@@ -21,7 +21,9 @@ const registerAdmin = async (req, res) => {
       const emailotp = getEmailOtp(req.body);
       const smsotp = getSmsOtp(req.body);
       const newStaff = new Admin({
-        name: req.body.name,
+        name: {
+          ['en']: req.body.name,
+        },
         email: req.body.email,
         phone: req.body.phone,
         emailotp: emailotp,
