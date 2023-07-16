@@ -36,23 +36,23 @@ app.get("/", (req, res) => {
 });
 
 //this for route will need for store front, also for admin dashboard
-app.use("/api/products/", productRoutes);
-app.use("/api/category/", categoryRoutes);
-app.use("/api/coupon/", couponRoutes);
-app.use("/api/notification/", notificationRoutes);
-app.use("/api/history/", historyRoutes);
-app.use("/api/customer/", customerRoutes);
+app.use("/api/products/", isAuth, productRoutes);
+app.use("/api/category/", isAuth, categoryRoutes);
+app.use("/api/coupon/", isAuth, couponRoutes);
+app.use("/api/notification/", isAuth, notificationRoutes);
+app.use("/api/history/", isAuth, historyRoutes);
+app.use("/api/customer/", isAuth, customerRoutes);
 app.use("/api/order/", isAuth, customerOrderRoutes);
-app.use("/api/attributes/", attributeRoutes);
-app.use("/api/setting/", settingRoutes);
+app.use("/api/attributes/", isAuth, attributeRoutes);
+app.use("/api/setting/", isAuth, settingRoutes);
 app.use("/api/currency/", isAuth, currencyRoutes);
-app.use("/api/language/", languageRoutes);uploadRoutes
+app.use("/api/language/", isAuth, languageRoutes);uploadRoutes
 app.use("/api/upload/", uploadRoutes);
 
 
 //if you not use admin dashboard then these two route will not needed.
 app.use("/api/admin/", adminRoutes);
-app.use("/api/orders/", orderRoutes);
+app.use("/api/orders/", isAuth, orderRoutes);
 
 // Use express's default error handling middleware
 app.use((err, req, res, next) => {
