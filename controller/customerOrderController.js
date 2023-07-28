@@ -10,6 +10,7 @@ const { formatAmountForStripe } = require("../lib/stripe/stripe");
 
 const addOrder = async (req, res) => {
   try {
+    
     const newOrder = new Order({
       ...req.body,
       user: req.user._id,

@@ -7,6 +7,8 @@ const { connectDB } = require("../config/db");
 const productRoutes = require("../routes/productRoutes");
 const customerRoutes = require("../routes/customerRoutes");
 const adminRoutes = require("../routes/adminRoutes");
+const sliderRoutes = require("../routes/sliderRoutes");
+const queryRoutes = require("../routes/queryRoutes");
 const orderRoutes = require("../routes/orderRoutes");
 const customerOrderRoutes = require("../routes/customerOrderRoutes");
 const categoryRoutes = require("../routes/categoryRoutes");
@@ -36,18 +38,20 @@ app.get("/", (req, res) => {
 });
 
 //this for route will need for store front, also for admin dashboard
-app.use("/api/products/", isAuth, productRoutes);
-app.use("/api/category/", isAuth, categoryRoutes);
-app.use("/api/coupon/", isAuth, couponRoutes);
-app.use("/api/notification/", isAuth, notificationRoutes);
-app.use("/api/history/", isAuth, historyRoutes);
-app.use("/api/customer/", isAuth, customerRoutes);
+app.use("/api/products/", productRoutes);
+app.use("/api/category/", categoryRoutes);
+app.use("/api/coupon/", couponRoutes);
+app.use("/api/notification/", notificationRoutes);
+app.use("/api/history/", historyRoutes);
+app.use("/api/customer/", customerRoutes);
 app.use("/api/order/", isAuth, customerOrderRoutes);
-app.use("/api/attributes/", isAuth, attributeRoutes);
-app.use("/api/setting/", isAuth, settingRoutes);
-app.use("/api/currency/", isAuth, currencyRoutes);
-app.use("/api/language/", isAuth, languageRoutes);uploadRoutes
+app.use("/api/attributes/", attributeRoutes);
+app.use("/api/setting/", settingRoutes);
+app.use("/api/currency/", currencyRoutes);
+app.use("/api/language/", languageRoutes);uploadRoutes
 app.use("/api/upload/", uploadRoutes);
+app.use("/api/slider/", sliderRoutes);
+app.use("/api/query/", queryRoutes);
 
 
 //if you not use admin dashboard then these two route will not needed.

@@ -2,6 +2,7 @@ require("dotenv").config();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Customer = require("../models/Customer");
+const Query = require("../models/Query");
 const { signInToken, tokenForVerify } = require("../config/auth");
 const { sendEmail } = require("../lib/email-sender/sender");
 const {
@@ -291,7 +292,27 @@ const updateCustomer = async (req, res) => {
     });
   }
 };
+const addCustomerQuery = async (req, res) => {
+  try {
+      
+      const newStaff = new Query({
+        name: req.body.name,
+        subject: req.body.subject,
+        message: req.body.message,
+        email: req.body.email,
+      });
+console.log(newStaff);
+      await newStaff.save();
+      res.status(200).send({
+        message: "Query added successfully!"
+      });
 
+  } catch (err) {
+    res.status(404).send({
+      message: "Failed to send ddd!",
+    });
+  }
+};
 const deleteCustomer = (req, res) => {
   Customer.deleteOne({ _id: req.params.id }, (err) => {
     if (err) {
@@ -319,4 +340,5 @@ module.exports = {
   getCustomerById,
   updateCustomer,
   deleteCustomer,
+  addCustomerQuery,
 };

@@ -1,4 +1,5 @@
 const Order = require("../models/Order");
+const {  sendEmail } = require("../../18sports-ecommerce-backend/lib/email-sender/sender");
 
 const getAllOrders = async (req, res) => {
   const { customerName, status, page, limit, day, startDate, endDate } =
@@ -118,6 +119,20 @@ const updateOrder = (req, res) => {
           message: err.message,
         });
       } else {
+        const body = {
+          from: process.env.EMAIL_USER,
+          to: `${req.body.detail.user_info.email}`,
+          subject: "Order Status update "+`${req.body.detail._id}`+ " 18Sports Ventures",
+          html: `<h2>Hello, ${req.body.detail.user_info.name}</h2>
+          <p>Your order id <strong>${req.body.detail._id}</strong>   current status <strong>${req.body.status}</strong> </p>
+            <p style="margin-top: 35px;">If you did not initiate this request, please contact us immediately at support@18 Sports Ventures.com</p>
+    
+            <p style="margin-bottom:0px;">Thank you</p>
+            <strong>18 Sports Ventures Team</strong>
+                 `,
+        };
+        const message = "Please check your email to see latest order status!";
+        sendEmail(body, res, message);
         res.status(200).send({
           message: "Order Updated Successfully!",
         });

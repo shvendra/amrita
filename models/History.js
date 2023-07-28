@@ -26,5 +26,5 @@ const historySchema = new mongoose.Schema(
   }
 );
 
-const Coupon = mongoose.model('History', historySchema);
-module.exports = Coupon;
+const History = mongoose.model('History', historySchema);
+module.exports = History;

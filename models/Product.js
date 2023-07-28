@@ -14,6 +14,10 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
+    gst: {
+      type: String,
+      required: false,
+    },
     title: {
       type: Object,
       required: true,

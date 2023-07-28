@@ -13,6 +13,7 @@ const {
   updateCustomer,
   deleteCustomer,
   addAllCustomers,
+  addCustomerQuery,
 } = require("../controller/customerController");
 const {
   passwordVerificationLimit,
@@ -51,6 +52,9 @@ router.get("/:id", getCustomerById);
 
 //update a user
 router.put("/:id", updateCustomer);
+
+//update a query
+router.post("/query", addCustomerQuery);
 
 //delete a user
 router.delete("/:id", deleteCustomer);

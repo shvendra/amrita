@@ -175,6 +175,7 @@ const updateProduct = async (req, res) => {
       product.isCombination = req.body.isCombination;
       product.variants = req.body.variants;
       product.stock = req.body.stock;
+      product.gst = req.body.gst;
       product.prices = req.body.prices;
       product.image = req.body.image;
       product.tag = req.body.tag;
