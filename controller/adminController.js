@@ -73,7 +73,8 @@ const loginAdmin = async (req, res) => {
           phone: admin.phone,
           email: admin.email,
           image: admin.image,
-          otp: smsotp
+          otp: smsotp,
+          role:admin.role
         });
       } else {
         res.status(401).send({

@@ -104,6 +104,7 @@ const getOrderById = async (req, res) => {
 
 const updateOrder = (req, res) => {
   const newStatus = req.body.status;
+  console.log(req.body);
   Order.updateOne(
     {
       _id: req.params.id,
@@ -122,9 +123,9 @@ const updateOrder = (req, res) => {
         const body = {
           from: process.env.EMAIL_USER,
           to: `${req.body.detail.user_info.email}`,
-          subject: "Order Status update "+`${req.body.detail._id}`+ " 18Sports Ventures",
+          subject: "Order Update "+`${req.body.detail.invoice}`+ " 18Sports Ventures",
           html: `<h2>Hello, ${req.body.detail.user_info.name}</h2>
-          <p>Your order id <strong>${req.body.detail._id}</strong>   current status <strong>${req.body.status}</strong> </p>
+          <p>Your order id <strong>${req.body.detail.invoice}</strong>   current status <strong>${req.body.status}</strong> </p>
             <p style="margin-top: 35px;">If you did not initiate this request, please contact us immediately at support@18 Sports Ventures.com</p>
     
             <p style="margin-bottom:0px;">Thank you</p>

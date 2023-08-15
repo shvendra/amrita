@@ -7,6 +7,7 @@ const {
   updateSlider,
   deleteSlider,
   updatedStatus,
+  getAllSliderwebsiteactive,
 } = require("../controller/sliderController");
 
 
@@ -15,6 +16,8 @@ router.post("/add", addSlider);
 
 //get all slider
 router.get("/", getAllSlider);
+//get all active slider
+router.get("/active", getAllSliderwebsiteactive);
 
 //get a slider
 router.post("/:id", getSliderById);

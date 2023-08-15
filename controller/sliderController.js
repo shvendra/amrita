@@ -34,7 +34,7 @@ const addSlider = async (req, res) => {
 const getAllSlider = async (req, res) => {
   // console.log('allamdin')
   try {
-    const sliders = await Slider.find({}).sort({ _id: -1 });
+    const sliders = await Slider.find().sort({ _id: -1 });
     res.send(sliders);
   } catch (err) {
     res.status(500).send({
@@ -42,6 +42,19 @@ const getAllSlider = async (req, res) => {
     });
   }
 };
+
+const getAllSliderwebsiteactive = async (req, res) => {
+  // console.log('allamdin')
+  try {
+    const sliders = await Slider.find({status: 'Active'}).sort({ _id: -1 });
+    res.send(sliders);
+  } catch (err) {
+    res.status(500).send({
+      message: err.message,
+    });
+  }
+};
+
 
 const getSliderById = async (req, res) => {
   try {
@@ -128,4 +141,5 @@ module.exports = {
   updateSlider,
   deleteSlider,
   updatedStatus,
+  getAllSliderwebsiteactive,
 };

@@ -164,7 +164,7 @@ const updateProduct = async (req, res) => {
         ...product.description,
         ...req.body.description,
       };
-
+      console.log(req.body);
       product.productId = req.body.productId;
       product.sku = req.body.sku;
       product.barcode = req.body.barcode;
