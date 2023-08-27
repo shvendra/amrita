@@ -11,6 +11,7 @@ const {
   getDashboardRecentOrder,
   getDashboardCount,
   getDashboardAmount,
+  bestSellerCategoryChart,
 } = require("../controller/orderController");
 
 //get all orders
@@ -25,11 +26,14 @@ router.get("/dashboard-recent-order", getDashboardRecentOrder);
 // dashboard order count
 router.get("/dashboard-count", getDashboardCount);
 
-// dashboard order amount
+// dashboard order amount  
 router.get("/dashboard-amount", getDashboardAmount);
 
 // chart data for product
 router.get("/best-seller/chart", bestSellerProductChart);
+
+// chart data for cat
+router.get("/best-seller/chartpie", bestSellerCategoryChart);
 
 //get all order by a user
 router.get("/customer/:id", getOrderCustomer);

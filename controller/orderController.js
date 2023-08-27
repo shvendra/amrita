@@ -270,7 +270,7 @@ const getDashboardCount = async (req, res) => {
 const getDashboardAmount = async (req, res) => {
   // console.log('total')
   let week = new Date();
-  week.setDate(week.getDate() - 10);
+  week.setDate(week.getDate()-10000000000000000000);
   try {
     // total order amount
     const totalAmount = await Order.aggregate([
@@ -318,10 +318,7 @@ const getDashboardAmount = async (req, res) => {
     // order list last 10 days
     const orderFilteringData = await Order.find(
       {
-        $or: [{ status: { $regex: `Delivered`, $options: "i" } }],
-        updatedAt: {
-          $gte: week,
-        },
+        $or: [{ status: { $regex: `Delivered`, $options: "i" } }]
       },
 
       {
@@ -389,6 +386,43 @@ const bestSellerProductChart = async (req, res) => {
     });
   }
 };
+
+const bestSellerCategoryChart = async (req, res) => {
+  try {
+    const totalDoc = await Order.countDocuments({});
+    const bestSellingProduct = await Order.aggregate([
+      {
+        $unwind: "$cart",
+      },
+      {
+        $group: {
+          _id: "$cart.category.name",
+          count: {
+            $sum: "$cart.quantity",
+          },
+        },
+      },
+      {
+        $sort: {
+          count: -1,
+        },
+      },
+      {
+        $limit: 4,
+      },
+    ]);
+
+    res.send({
+      totalDoc,
+      bestSellingProduct,
+    });
+  } catch (err) {
+    res.status(500).send({
+      message: err.message,
+    });
+  }
+};
+
 
 const getDashboardOrders = async (req, res) => {
   const { page, limit } = req.query;
@@ -555,4 +589,5 @@ module.exports = {
   getDashboardRecentOrder,
   getDashboardCount,
   getDashboardAmount,
+  bestSellerCategoryChart,
 };
