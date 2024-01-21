@@ -4,52 +4,14 @@ const bcrypt = require("bcryptjs");
 const adminSchema = new mongoose.Schema(
   {
     name: {
-      type: Object,
+      type: String,
       required: true,
-    },
-    image: {
-      type: String,
-      required: false,
-    },
-    address: {
-      type: String,
-      required: false,
-    },
-    country: {
-      type: String,
-      required: false,
-    },
-    city: {
-      type: String,
-      required: false,
-    },
-    veryfied: {
-      type: String,
-      required: false,
     },
     email: {
       type: String,
       required: true,
       unique: true,
       lowercase: true,
-    },
-    phone: {
-      type: String,
-      required: false,
-    },
-    smsotp: {
-      type: String,
-      required: false,
-    },
-    emailotp: {
-      type: String,
-      required: false,
-    },
-    status: {
-      type: String,
-      required: false,
-      default: "Inactive",
-      enum: ["Active", "Inactive"],
     },
     password: {
       type: String,
@@ -59,16 +21,10 @@ const adminSchema = new mongoose.Schema(
     role: {
       type: String,
       required: true,
-      default: "Admin",
+      default: "teacher",
       enum: [
-        "Admin",
-        "Super Admin",
-        "Cashier",
-        "Manager",
-        "CEO",
-        "Driver",
-        "Security Guard",
-        "Accountant",
+        "teacher",
+        "student",
       ],
     },
     joiningData: {
@@ -84,3 +40,4 @@ const adminSchema = new mongoose.Schema(
 const Admin = mongoose.model("Admin", adminSchema);
 
 module.exports = Admin;
+

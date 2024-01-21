@@ -1,5 +1,5 @@
 {
-  "name": "18 Sports Ventures-backend",
+  "name": "Amrita Vishwa Vidyapeetham",
   "version": "0.1.0",
   "description": "this is the server of dashter built with node, express, mongoose schema validation and use mongodb as a database",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "data:import": "node script/seed.js",
     "product": "node script/product.js"
   },
-  "author": "18 Sports Ventures",
+  "author": "Amrita Vishwa Vidyapeetham",
   "license": "ISC",
   "dependencies": {
     "@paypal/checkout-server-sdk": "^1.0.3",
@@ -24,6 +24,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-rate-limit": "^6.1.0",
+    "fs": "^0.0.1-security",
     "helmet": "^5.0.2",
     "js-cookie": "^3.0.1",
     "jsonwebtoken": "^9.0.0",
@@ -31,6 +32,7 @@
     "mongoose-sequence": "^5.3.1",
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.7.2",
+    "path": "^0.12.7",
     "socket.io": "^4.4.0",
     "stripe": "^9.14.0",
     "unirest": "^0.6.0",
